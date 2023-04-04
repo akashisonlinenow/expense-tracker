@@ -12,11 +12,16 @@ const Header = styled(Typography)`
   margin: 10px 0;
   font-size: 36px;
   color: blue;
-  text-transform: uppercase;`
+  text-transform: uppercase;
+`
+
+const Component = styled(Box)`
+  display: flex;
+`
 
 function App() {
 
-  const [transactions, setTransactions] = useState([
+  const [transaction, setTransactions] = useState([
     { id: 1, text: "Momos", amount: -20 },
     { id: 2, text: "Salary", amount: 3000 },
     { id: 3, text: "Book", amount: -100 },
@@ -28,16 +33,16 @@ function App() {
   return (
     <Box className="App">
       <Header>Expense Tracker</Header>
-      <Box>
+      <Component>
         <Box>
           <Balance />
           <ExpenseCard />
           <NewTransactions />
         </Box>
         <Box>
-          <Transactions transactions={transactions} />
+          <Transactions transactions={transaction} />
         </Box>
-      </Box>
+      </Component>
     </Box>
   );
 }

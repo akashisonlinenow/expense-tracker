@@ -1,5 +1,6 @@
 import { Box, Divider, List, Typography } from '@mui/material'
 import React from 'react'
+import Transaction from './Transaction'
 
 const Transactions = ({ transactions }) => {
     return (
@@ -9,7 +10,7 @@ const Transactions = ({ transactions }) => {
             <List>
                 {
                     transactions.map(transaction => (
-                        <p> hello</p>
+                        <Transaction transaction={transaction} />
                     ))
                 }
             </List>
