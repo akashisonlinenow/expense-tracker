@@ -1,24 +1,44 @@
-import logo from './logo.svg';
 import './App.css';
+import { Box, Typography, styled } from '@mui/material';
+
+// components
+import Balance from './components/Balance';
+import ExpenseCard from './components/ExpenseCard';
+import NewTransactions from './components/NewTransactions';
+import Transactions from './components/Transactions';
+import { useState } from 'react';
+
+const Header = styled(Typography)`
+  margin: 10px 0;
+  font-size: 36px;
+  color: blue;
+  text-transform: uppercase;`
 
 function App() {
+
+  const [transactions, setTransactions] = useState([
+    { id: 1, text: "Momos", amount: -20 },
+    { id: 2, text: "Salary", amount: 3000 },
+    { id: 3, text: "Book", amount: -100 },
+    { id: 4, text: "Bonus", amount: 1500 }
+
+
+  ])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Box className="App">
+      <Header>Expense Tracker</Header>
+      <Box>
+        <Box>
+          <Balance />
+          <ExpenseCard />
+          <NewTransactions />
+        </Box>
+        <Box>
+          <Transactions transactions={transactions} />
+        </Box>
+      </Box>
+    </Box>
   );
 }
 
