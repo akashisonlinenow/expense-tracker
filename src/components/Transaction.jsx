@@ -1,20 +1,28 @@
-import { ListItem, ListItemText, styled } from '@mui/material'
-import React from 'react'
+import { ListItemText, ListItem, styled, ListItemIcon } from '@mui/material';
+import DeleteIcon from '@mui/icons-material/Delete';
 
-const Detail = styled(ListItem)`
-  margin-top: 10px;
-`
+const List = styled(ListItem)`
+    display: flex;
+    marginTop: 10px;
+    border: 1px solid #F6F6F6;
+`;
 
-const Transaction = ({ transaction }) => {
+const Transaction = ({ transaction, deleteTransaction }) => {
 
-  const color = transaction.amount > 0 ? 'Green' : 'Red';
+  const sign = transaction.amount >= 0 ? '₹' : '-₹';
+  const amount = sign + Math.abs(transaction.amount);
+  const color = transaction.amount >= 0 ? 'Green' : 'Red';
+
 
   return (
-    <Detail style={{ background: `${color}`, color: '#fff' }}>
-      <ListItemText>{transaction.text}</ListItemText>
-      <ListItemText>{transaction.amount}</ListItemText>
-    </Detail>
+    <List style={{ background: `${color}`, color: '#fff' }}>
+      <ListItemIcon>
+        <DeleteIcon onClick={() => deleteTransaction(transaction.id)} />
+      </ListItemIcon>
+      <ListItemText primary={transaction.text} />
+      <ListItemText primary={amount} />
+    </List>
   )
 }
 
-export default Transaction
+export default Transaction;
