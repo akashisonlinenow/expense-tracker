@@ -31,7 +31,7 @@ const NewTransaction = ({ addTransaction }) => {
         <Container>
             <Typography variant="h5">New Transaction</Typography>
             <TextField value={text} label="Enter name of Expense or Income" onChange={(e) => setText(e.target.value)} />
-            <TextField value={amount} label="Enter Amount(if it is Expense then add it with '-' sign)" onChange={(e) => setAmount(e.target.value)} />
+            <TextField value={amount} label="Enter Amount (Expense=-(Amount) or Income=+(Amount))" onChange={(e) => setAmount(e.target.value)} />
             <StyledButton variant="contained" onClick={newTransaction}>Add Transaction</StyledButton>
         </Container>
     )
